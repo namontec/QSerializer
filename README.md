@@ -25,6 +25,15 @@ For create serializable member of class and generate propertyes, use macro:
 - __QS_QT_DICT_OBJECTS__
 - __QS_STL_DICT__
 - __QS_STL_DICT_OBJECTS__
+- __QS_FIELD_OPTIONAL__
+- __QS_COLLECTION_OPTIONAL__
+- __QS_OBJECT_OPTIONAL__
+- __QS_COLLECTION_OBJECTS_OPTIONAL__
+- __QS_QT_DICT_OPTIONAL__
+- __QS_QT_DICT_OBJECTS_OPTIONAL__
+- __QS_STL_DICT_OPTIONAL__
+- __QS_STL_DICT_OBJECTS_OPTIONAL__
+
 
 If you want only declare exists fields - use macro QS_JSON_FIELD, QS_XML_FIELD, QS_JSON_COLLECTION and other (look at qserializer.h)
 ### Inherit from QSerializer
