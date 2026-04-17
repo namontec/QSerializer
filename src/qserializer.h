@@ -116,7 +116,10 @@ public:
             }
 #endif
 
-            json.insert(metaObject()->property(i).name(), metaObject()->property(i).readOnGadget(this).toJsonValue());
+            QJsonValue value = metaObject()->property(i).readOnGadget(this).toJsonValue();
+            if (!value.isNull()) {
+                json.insert(metaObject()->property(i).name(), value);
+            }
         }
         return json;
     }
@@ -179,7 +182,11 @@ public:
                 continue;
             }
 #endif
-            el.appendChild(QDomNode(metaObject()->property(i).readOnGadget(this).value<QDomNode>()));
+            QDomNode node = metaObject()->property(i).readOnGadget(this).value<QDomNode>();
+            // Skip empty optional fields (elements with no child nodes)
+            if (!node.isNull() && node.hasChildNodes()) {
+                el.appendChild(QDomNode(node));
+            }
         }
         doc.appendChild(el);
         return doc;
